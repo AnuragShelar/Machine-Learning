@@ -14,6 +14,7 @@ dataset=pd.read_csv('Data.csv') #read the dataset
 X=dataset.iloc[:,:-1].values
 y=dataset.iloc[:,3].values   #before comma indicates all the lines and after comma indicated last colomn is not included
 
+
 #Deal with missing values
 from sklearn.preprocessing import Imputer
 #missing_value specifies NaN bcaz it is in csv file
@@ -21,9 +22,9 @@ imputer=Imputer(missing_values='NaN',strategy='mean',axis=0)
 
 #identify which colomns contain missing colomns 
 imputer=imputer.fit(X[:,1:3])
-
 #replace missing colomn data by mean
 X[:,1:3]=imputer.transform(X[:,1:3])
+
 
 #Encoding categorical data
 from sklearn.preprocessing import LabelEncoder,OneHotEncoder
